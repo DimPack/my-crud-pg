@@ -40,6 +40,12 @@ module.exports.getThingByPK = async (req, res, next) => {
 
 module.exports.updateThingByPK = async (req, res, next) => {
   try {
+    const {body, params:{idThing}} = req;
+    const [updateThing] = await Thing.updateByPk(idThing, body);
+    if (updateThing) {
+      return res.status(200).send({ data: updateThing });
+    }
+    return res.status(404).send();
   } catch (error) {
     next(error);
   }
@@ -47,6 +53,7 @@ module.exports.updateThingByPK = async (req, res, next) => {
 
 module.exports.deleteThingByPK = async (req, res, next) => {
   try {
+    //HOMEWORK
   } catch (error) {
     next(error);
   }
