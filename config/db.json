@@ -1,7 +1,7 @@
 {
     "development": {
         "user":"postgres",
-        "password": "postgres",
+        "password": "qwertyuiop",
         "host": "localhost",
         "port": 5432,
         "database": "my_crud_pg"

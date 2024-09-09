@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const config = require("../config/db.json");
 
-const dbConfig = config[(process.env, NODE_ENV || "development")];
+const dbConfig = config[(process.env.NODE_ENV || "development")];
 const client = new Client(dbConfig);
 
 const currentFileName = path.basename(__filename);
