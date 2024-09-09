@@ -27,7 +27,9 @@ module.exports.getAllThings = async (req, res, next) => {
 
 module.exports.getThingByPK = async (req, res, next) => {
   try {
-    const { params: {idThing}} = req;
+    const {
+      params: { idThing },
+    } = req;
     const [thing] = await Thing.findByPk(idThing);
     if (thing) {
       return res.status(200).send({ data: thing });
@@ -40,7 +42,10 @@ module.exports.getThingByPK = async (req, res, next) => {
 
 module.exports.updateThingByPK = async (req, res, next) => {
   try {
-    const {body, params:{idThing}} = req;
+    const {
+      body,
+      params: { idThing },
+    } = req;
     const [updateThing] = await Thing.updateByPk(idThing, body);
     if (updateThing) {
       return res.status(200).send({ data: updateThing });
@@ -53,7 +58,12 @@ module.exports.updateThingByPK = async (req, res, next) => {
 
 module.exports.deleteThingByPK = async (req, res, next) => {
   try {
-    //HOMEWORK
+    const { idThing } = req.params;
+    const [deleteThing] = await Thing.deleteByPk(idThing);
+    if (deleteThing) {
+      return res.status(200).send({ data: deleteThing });
+    }
+    return res.status(404).send();
   } catch (error) {
     next(error);
   }
